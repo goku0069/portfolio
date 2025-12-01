@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deepanker | Web & Graphic Designer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050608;
+      --bg-soft: #0f1117;
+      --accent: #ff6b3d;
+      --accent-soft: rgba(255, 107, 61, 0.12);
+      --text: #f5f5f7;
+      --muted: #9ca3af;
+      --card: #111827;
+      --border: rgba(148, 163, 184, 0.35);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #1e293b 0, #020617 42%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 32px auto 64px;
+      padding: 0 16px 48px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr);
+      gap: 28px;
+      align-items: center;
+      padding: 24px 24px 24px;
+      margin-bottom: 28px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(248, 113, 113, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.08), transparent 55%),
+        radial-gradient(circle at 0 100%, rgba(96, 165, 250, 0.06), transparent 60%);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.32);
+    }
+
+    .pill-accent {
+      border-color: rgba(248, 250, 252, 0.85);
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.2), rgba(15, 23, 42, 0.9));
+      color: #e5e7eb;
+    }
+
+    .pill-accent span {
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 36rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-sub strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.75);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff6b3d, #fb923c);
+      color: #020617;
+      box-shadow: 0 12px 30px rgba(248, 113, 113, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary span {
+      font-size: 16px;
+    }
+
+    .btn-ghost {
+      padding: 9px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-ghost span {
+      font-size: 16px;
+    }
+
+    .hero-right {
+      justify-self: end;
+    }
+
+    .profile-card {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top, #1f2933, #020617);
+      padding: 18px 18px 16px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.95);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(248, 250, 252, 0.2);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .profile-orbit {
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.7;
+    }
+
+    .profile-avatar {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      border: 2px solid rgba(248, 250, 252, 0.9);
+      background: radial-gradient(circle at 30% 10%, #f97316, #f97316 16%, #0f172a 64%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 26px auto 14px;
+      box-shadow:
+        0 0 0 6px rgba(15, 23, 42, 0.9),
+        0 20px 35px rgba(0, 0, 0, 0.9);
+      font-size: 42px;
+      color: #0b1120;
+      font-weight: 700;
+    }
+
+    .profile-name {
+      text-align: center;
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+
+    .profile-role {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 11px;
+      margin-bottom: 12px;
+    }
+
+    .profile-chip {
+      padding: 7px 8px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .profile-chip strong {
+      font-size: 11px;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .profile-contact {
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.35);
+      display: grid;
+      grid-template-columns: 1.2fr 1.4fr;
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .profile-contact a {
+      color: var(--muted);
+      word-break: break-all;
+    }
+
+    .profile-contact-label {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 10px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1.5fr);
+      gap: 18px;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 16px 18px 14px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(20px);
+    }
+
+    section h2 {
+      font-size: 15px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    section h2 span {
+      font-size: 11px;
+      color: rgba(148, 163, 184, 0.9);
+      font-weight: 500;
+    }
+
+    .experience-item {
+      padding: 10px 0 8px;
+      border-bottom: 1px dashed rgba(51, 65, 85, 0.7);
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+
+    .experience-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .experience-role {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .experience-company {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .experience-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .experience-badge {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .experience-badge.impact {
+      border-color: rgba(52, 211, 153, 0.7);
+      color: #6ee7b7;
+    }
+
+    .experience-list {
+      list-style: none;
+      font-size: 12px;
+      color: var(--muted);
+      display: grid;
+      gap: 4px;
+    }
+
+    .experience-list li::before {
+      content: "•";
+      margin-right: 6px;
+      color: rgba(248, 113, 113, 0.9);
+    }
+
+    .pill-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill-small {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .project-card {
+      border-radius: 14px;
+      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.12), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 9px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card h3 {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .project-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 3px;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: rgba(209, 213, 219, 0.9);
+    }
+
+    .tag-accent {
+      border-color: rgba(248, 113, 113, 0.9);
+      color: #fb923c;
+    }
+
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .skill-pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: rgba(229, 231, 235, 0.95);
+    }
+
+    .skill-pill.soft {
+      color: var(--muted);
+      border-style: dashed;
+    }
+
+    .edu-item {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(51, 65, 85, 0.7);
+    }
+
+    .edu-item:last-child {
+      border-bottom: none;
+    }
+
+    .edu-item strong {
+      display: block;
+      color: #e5e7eb;
+      font-size: 13px;
+    }
+
+    .achievements-list {
+      list-style: none;
+      font-size: 12px;
+      color: var(--muted);
+      display: grid;
+      gap: 4px;
+    }
+
+    .achievements-list li::before {
+      content: "★";
+      margin-right: 6px;
+      color: #fbbf24;
+      font-size: 11px;
+    }
+
+    .side-section + .side-section {
+      margin-top: 10px;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 880px) {
+      header {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        justify-self: flex-start;
+      }
+
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .profile-card {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 18px 16px;
+      }
+
+      .page {
+        margin-top: 20px;
+      }
+
+      section {
+        padding: 14px 14px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <div class="badge-row">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Available for freelance & full-time
+          </div>
+          <div class="pill-accent">
+            <span>Web & Graphic Designer</span> · Based in India
+          </div>
+        </div>
+        <h1 class="hero-title">
+          Hello, I’m <span>Deepanker</span> — crafting bold, user‑friendly visuals for the web.
+        </h1>
+        <p class="hero-sub">
+          A dedicated Graphic and Web Designer blending clean UI, strong brand thinking, and performance‑focused visuals to create digital experiences that both look sharp and convert. With agency and startup experience across web, social, and ad campaigns, every project is treated as a chance to ship polished, detail‑driven design. 
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">Web Design · UI · Front‑end</span>
+          <span class="hero-tag">Branding & Logos</span>
+          <span class="hero-tag">Social Media Creatives</span>
+          <span class="hero-tag">Ad & Performance Design</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">
+            <span>⬤</span> View Experience
+          </button>
+          <a class="btn-ghost" href="mailto:deepankergautam1999@gmail.com">
+            <span>✉</span> Let’s Collaborate
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="profile-card">
+          <div class="profile-badge">
+            🎨 Pixel‑perfect since 2022
+          </div>
+          <div class="profile-orbit"></div>
+          <div class="profile-avatar">D</div>
+          <div class="profile-name">Deepanker</div>
+          <div class="profile-role">Web & Graphic Designer</div>
+
+          <div class="profile-grid">
+            <div class="profile-chip">
+              <strong>Experience</strong>
+              3+ years across agencies & remote roles 
+            </div>
+            <div class="profile-chip">
+              <strong>Focus</strong>
+              Web UI, branding, social & performance creatives 
+            </div>
+            <div class="profile-chip">
+              <strong>Current</strong>
+              Freelance
+            </div>
+            <div class="profile-chip">
+              <strong>Previous</strong>
+              ClicksBazaar, First Point Creations, Lazarus Network 
+            </div>
+          </div>
+
+          <div class="profile-contact">
+            <div>
+              <div class="profile-contact-label">Phone</div>
+              <a href="tel:+919555697032">+91 9555 69 7032</a>
+            </div>
+            <div>
+              <div class="profile-contact-label">Email</div>
+              <a href="mailto:deepankergautam1999@gmail.com">deepankergautam1999@gmail.com</a>
+            </div>
+            <div>
+              <div class="profile-contact-label">Portfolio</div>
+              <a href="https://behance.net/deepankergautam" target="_blank" rel="noreferrer">
+                behance.net/deepankergautam
+              </a>
+            </div>
+            <div>
+              <div class="profile-contact-label">Location</div>
+              <span>India · Remote‑ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <section id="experience">
+          <h2>Experience <span>Agency, product & remote</span></h2>
+
+          <div class="experience-item">
+            <div class="experience-meta">
+              <span>Graphic Designer · ClicksBazaar</span>
+              <span>Gurugram · Nov 2023 – Apr 2024</span>
+            </div>
+            <div class="experience-role">Social & Performance Creative Specialist</div>
+            <div class="experience-company">
+              Led design for social campaigns, product mockups and high‑impact ad creatives across brands. 
+            </div>
+            <div class="experience-badges">
+              <span class="experience-badge">Social Media Creatives</span>
+              <span class="experience-badge">Ad & Banner Design</span>
+              <span class="experience-badge">Product Mockups</span>
+              <span class="experience-badge impact">Fast‑paced marketing environment</span>
+            </div>
+            <ul class="experience-list">
+              <li>Produced scroll‑stopping social media graphics, banners and carousels aligned with brand aesthetics and campaign messaging. </li>
+              <li>Built product mockups and ad layouts that supported launch and performance marketing initiatives. </li>
+              <li>Collaborated with marketing teams to translate briefs into visuals tuned for engagement. </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-meta">
+              <span>Executive Graphic & Web Designer · First Point Creations</span>
+              <span>Greater Kailash · Mar 2022 – Apr 2023</span>
+            </div>
+            <div class="experience-role">Website & Brand Designer</div>
+            <div class="experience-company">
+              Combined front‑end development with visual design to deliver complete web experiences. 
+            </div>
+            <div class="experience-badges">
+              <span class="experience-badge">HTML · CSS · JavaScript · Bootstrap</span>
+              <span class="experience-badge">Logos & Icon Systems</span>
+              <span class="experience-badge">Design Systems</span>
+              <span class="experience-badge impact">Team Lead · 2 designers</span>
+            </div>
+            <ul class="experience-list">
+              <li>Designed and implemented responsive corporate websites using HTML, CSS, JavaScript and Bootstrap. </li>
+              <li>Created cohesive graphic systems including logos, icons and illustrative elements for digital brands. </li>
+              <li>Managed and mentored a two‑person design team while handling client communication and presentations. </li>
+              <li>Ensured on‑time delivery with high visual quality and was commended for contributions. </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-meta">
+              <span>Graphic & Web Design Intern · Lazarus Network</span>
+              <span>Remote · West Park, Florida · Mar 2022 – Jun 2022</span>
+            </div>
+            <div class="experience-role">Brand & Product Visuals Intern</div>
+            <div class="experience-company">
+              Remote internship focused on product‑driven visual design and theme exploration. 
+            </div>
+            <div class="experience-badges">
+              <span class="experience-badge">Logos & Covers</span>
+              <span class="experience-badge">Posters & Product Visuals</span>
+              <span class="experience-badge">Theme & UI Support</span>
+            </div>
+            <ul class="experience-list">
+              <li>Designed logos, posters and cover images for digital products and brand touchpoints. </li>
+              <li>Collaborated with developers on visual themes and content layouts for web experiences. </li>
+              <li>Delivered assets remotely within tight timelines while aligning with project goals. </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Highlighted Projects <span>From identity to conversion</span></h2>
+          <div class="grid-2">
+            <div class="project-card">
+              <h3>Brand Identity Suite</h3>
+              <p class="project-meta">
+                Complete visual language for a startup launch — logo, color, typography and social presence. 
+              </p>
+              <div class="project-tag-row">
+                <span class="project-tag tag-accent">Branding</span>
+                <span class="project-tag">Logo Design</span>
+                <span class="project-tag">Social Templates</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h3>Marketing Landing Page</h3>
+              <p class="project-meta">
+                Responsive marketing page with strong hero, visual hierarchy and clear call‑to‑action structure. 
+              </p>
+              <div class="project-tag-row">
+                <span class="project-tag tag-accent">UI Design</span>
+                <span class="project-tag">Responsive Layout</span>
+                <span class="project-tag">Conversion‑focused</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h3>Social Design System</h3>
+              <p class="project-meta">
+                Reusable post and story templates for a consistent brand voice across platforms. 
+              </p>
+              <div class="project-tag-row">
+                <span class="project-tag tag-accent">Social Media</span>
+                <span class="project-tag">Template System</span>
+                <span class="project-tag">Visual Consistency</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <h3>E‑commerce Ad Suite</h3>
+              <p class="project-meta">
+                Carousel ads, banners and story creatives tailored to highlight product benefits. 
+              </p>
+              <div class="project-tag-row">
+                <span class="project-tag tag-accent">Ad Creatives</span>
+                <span class="project-tag">Performance Design</span>
+                <span class="project-tag">Product‑first visuals</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div>
+        <section class="side-section">
+          <h2>Core Skills <span>Design, UI & front‑end</span></h2>
+          <div class="skills-cloud">
+            <span class="skill-pill">Adobe Photoshop</span>
+            <span class="skill-pill">Adobe Illustrator</span>
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">Logo Design</span>
+            <span class="skill-pill">Branding</span>
+            <span class="skill-pill">UI/UX</span>
+            <span class="skill-pill">Social Media Design</span>
+            <span class="skill-pill">Ad & Banner Creatives</span>
+            <span class="skill-pill">HTML5</span>
+            <span class="skill-pill">CSS3</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Bootstrap</span>
+            <span class="skill-pill">Responsive Design</span>
+            <span class="skill-pill">Print Design</span>
+          </div>
+        </section>
+
+        <section class="side-section">
+          <h2>Professional Skills <span>How work gets done</span></h2>
+          <div class="skills-cloud">
+            <span class="skill-pill soft">Communication</span>
+            <span class="skill-pill soft">Team Leadership</span>
+            <span class="skill-pill soft">Project Management</span>
+            <span class="skill-pill soft">Client Relations</span>
+            <span class="skill-pill soft">Problem Solving</span>
+            <span class="skill-pill soft">Adaptability</span>
+          </div>
+        </section>
+
+        <section class="side-section">
+          <h2>Education <span>Design & science</span></h2>
+          <div class="edu-item">
+            <strong>Graphic & Web Designing Course</strong>
+            Dice Academy — Design fundamentals, UI, tools and web workflows. 
+          </div>
+          <div class="edu-item">
+            <strong>B.Sc. (Hons) Zoology</strong>
+            Delhi University — Analytical thinking and structured problem solving with a scientific approach. 
+          </div>
+        </section>
+
+        <section class="side-section">
+          <h2>Highlights <span>Impact & recognition</span></h2>
+          <ul class="achievements-list">
+            <li>Recognized for consistent, high‑quality design contributions at every agency role. </li>
+            <li>Delivered 50+ end‑to‑end design projects across websites, brands and campaigns. </li>
+            <li>Led collaborations that achieved 90%+ client satisfaction and repeat work. </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      Open to full‑time roles, freelance collaborations and remote opportunities. Drop a line at
+      <a href="mailto:deepankergautam1999@gmail.com">deepankergautam1999@gmail.com</a>. 
+    </footer>
+  </div>
+</body>
+</html>
